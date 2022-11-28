@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chain</title>
+    <script src="https:code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+		.container {
+			max-width: 1000px;
+			margin-left: auto;
+			margin-right: auto;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		table {
+			border-collapse: collapse;
+    		margin: 25px 0;
+			padding: 10px;
+			font-size: 0.9em;
+			font-family: sans-serif;
+			min-width: 400px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+		thead{
+			background-color: #009879;
+			color: #ffffff;
+			text-align: left;
+		}
+		thead, td{
+			padding: 12px 15px;
+			border-bottom: 1px solid #dddddd;
+		}
+		tbody td:nth-of-type(even){
+			background-color: #f3f3f3;
+		}
+
+        #resync, #home{
+            width : 100px;
+            height : 30px;
+            padding : 5px
+        }
+    </style>
+    <script>
+        setInterval(function(){
+            $.ajax({
+                url : '/chain/update',
+                type : 'POST',
+                success : function(data){
+                    $(".wrap").empty();
+
+                        const maintb = $("<table />")
+                        let thead = $("<thead />").append(
+                            $("<th />").text("Index"),
+                            $("<th />").text("Round"),
+                            $("<th />").text("Port"),
+                            $("<th />").text("Pre-Hash"),
+                            $("<th />").text("Proof"),
+                            $("<th />").text("Time"),
+                            $("<th />").text("Transaction"),
+                        )
+                        maintb.append(thead);
+                        if(data.length>0){
+                            let tb = $("<tbody />");
+                            for(var i in data){
+                                var $index = data[i].index;
+                                var $round = data[i].round;
+                                var $port = data[i].port;
+                                var $prehash = data[i].previous_hash
+                                var $proof = data[i].proof;
+                                var $timestamp = data[i].timestamp;
+                                var $transactions = JSON.stringify(data[i].transactions);
+                                console.log(data[i]);
+
+                                var row = $("<tr />").append(
+                                    $("<td />").text($index),
+                                    $("<td />").text($round),
+                                    $("<td />").text($port),
+                                    $("<td />").text($prehash),
+                                    $("<td />").text($proof),
+                                    $("<td />").text($timestamp),
+                                    $("<td />").text($transactions),
+                                );
+                                tb.append(row);
+                            }
+                            maintb.append(tb);
+                            $(".wrap").append(maintb);
+                        }
+                }
+            })},1000);
+    </script>
+</head>
+<body>
+	<center>
+		<div id = "container">
+    	<div id  = "head">
+        	<center><h1>CPOW</h1></center>
+        	<center><h3>Chain</h3></center>
+        	<center>
+				<a href ="/"><button id ="home">Home</button></a>
+				<a href ="/chain"><button id ="resync">Resync</button></a>
+			</center>
+
+        		<br>
+    		</div>
+    	<div class = "wrap"> </div>
+		</div>
+	</center>
+
+
+</body>
+</html>
