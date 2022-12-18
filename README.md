@@ -39,7 +39,7 @@
  > 블록체인은 미래의 4차산업혁명을 이끌 기술로 평가된다. 대표적인 합의 알고리즘인 PoW는 탈중앙화와 보안성 면에서 장점을 보이지만 에너지 소비량이 많다는 단점이 있다. 따라서 채굴 과정을 단계별로 나누어 채굴 참여자 수를 제한하는 CPoW(Competition Proof Of Work)를 제안한다. 
 
 ## 환경 설정
-  #### cpow_project : 
+  #### CPOW_Project : 
      파이썬 인터프리터 설정 (conda와 같은 가상환경은 동작하지 않는다.)
      
      인터프리터에 따라 terminal에 "pipenv run python main.py -p 5001" 혹은 "python main.py -p 5001"과 같이 원하는 port와 함께 실행
