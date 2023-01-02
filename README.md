@@ -28,7 +28,7 @@
     <li>
       <a href="http://sigin.or.kr/sub03/sub0304.php?category=2&view=detail&no=207">SWCC-2022 하계 컴퓨터통신 워크샵 </a>
       <ul>
-        <li><a href="https://docs.google.com/document/d/1nnVXEC1I44jRgMOuP6NDb3Ae1qBIoDUg/edit">제출 논문 [효율적 에너지 소비를 위한 구분화된 경잭적 합의 알고리즘]</a></li>
+        <li><a href="https://docs.google.com/document/d/1nnVXEC1I44jRgMOuP6NDb3Ae1qBIoDUg/edit">제출 논문 [효율적 에너지 소비를 위한 구분화된 경쟁적 합의 알고리즘]</a></li>
       </ul>
     </li>
   </ol>
